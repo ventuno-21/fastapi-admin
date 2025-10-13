@@ -1,0 +1,21 @@
+[project]
+name = "fastapi-admin"
+version = "0.1.0"
+description = "Admin panel for FastAPI using SQLModel + SQLAlchemy 2.0"
+authors = [{ name = "Ventuno", github= "https://github.com/ventuno-21" }]
+readme = "README.md"
+requires-python = ">=3.9"
+
+dependencies = [
+    "fastapi",
+    "sqlalchemy>=2.0",
+    "sqlmodel",
+    "jinja2",
+    "passlib[bcrypt]",
+    "typer",
+    "python-multipart",
+    "htmx"
+]
+
+[project.scripts]
+createsuperuser = "fastapi_admin.main_admin:create_superuser_command"

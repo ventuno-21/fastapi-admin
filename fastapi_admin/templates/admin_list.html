@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="flex justify-between items-center mb-4">
+    <h2 class="text-xl font-bold">{{ model.__name__ }} Records</h2>
+    <a href="/admin/model/{{ model_name }}/add" class="bg-green-500 text-white px-3 py-1 rounded">+ Add New</a>
+</div>
+
+<table class="min-w-full bg-white rounded shadow overflow-hidden">
+    <thead class="bg-gray-50">
+        <tr>
+            {% for col in model.__table__.columns %}
+            <th class="text-left p-2">{{ col.name }}</th>
+            {% endfor %}
+            <th class="p-2">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for rec in records %}
+        <tr class="border-t">
+            {% for col in model.__table__.columns %}
+            <td class="p-2">{{ getattr(rec, col.name) }}</td>
+            {% endfor %}
+            <td class="p-2">
+                {% set pk = None %}
+                {% for c in model.__table__.columns %}
+                {% if c.primary_key %}
+                {% set pk = c.name %}
+                {% break %}
+                {% endif %}
+                {% endfor %}
+                <a href="/admin/model/{{ model_name }}/edit/{{ getattr(rec, pk) }}" class="text-blue-600">Edit</a> |
+                <a href="/admin/model/{{ model_name }}/delete/{{ getattr(rec, pk) }}" class="text-red-600">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
