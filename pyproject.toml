@@ -2,7 +2,7 @@
 name = "fastapi-admin"
 version = "0.1.0"
 description = "Admin panel for FastAPI using SQLModel + SQLAlchemy 2.0"
-authors = [{ name = "Ventuno", github= "https://github.com/ventuno-21" }]
+authors = [{ name = "Ventuno" }]
 readme = "README.md"
 requires-python = ">=3.9"
 
