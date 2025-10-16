@@ -1,4 +1,3 @@
-# models.py
 # Default User model and an AbstractUser for inheritance (like Django's AbstractUser).
 from typing import Optional
 from datetime import datetime
